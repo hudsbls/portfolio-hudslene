@@ -1,0 +1,774 @@
+/*  elimina margem e padding padrão de navegadores */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* define paleta de cores utilizada na página e as transforma em variáveis para melhor manipulação */
+:root {
+    --white-pearl: #F4EDE5;
+    --black-coffee: #1F150B;
+    --green-neon: #E5F45C;
+    --purple: #939be4;
+    --pink-light: #F7CDED;
+    --orange-real: #ED6D33;
+
+}
+
+/* controla o conteúdo para nao ultrapassar a largura horizontal. */
+html,
+body {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* definição de estilização básica da página inteira */
+body {
+    font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: 1.2;
+    color: var(--black-coffee);
+    background-color: var(--white-pearl);
+}
+
+h3 {
+    font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 4px solid var(--black-coffee);
+    width: fit-content;
+}
+
+
+/*********************************************
+ *            COMP. REUTILIZÁVEIIS           *
+ *********************************************/
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* definição da transição que será utilizada no componente card  */
+.card {
+    background-color: var(--white-pearl);
+    padding: 3rem;
+    border: 2px solid var(--black-coffee);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* criação de grid para design responsivo com minimo de largura de 300 px, com colunas ajustáveis igualmente */
+.grid-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.section {
+    min-height: 100vh;
+    border-bottom: 1px solid var(--black-coffee);
+    padding-top: 40px;
+}
+
+/* elimina a borda da última seção */
+.section:last-child {
+    border-bottom: none;
+}
+
+.section__header {
+    padding: 4rem 2rem;
+    margin-bottom: 0;
+}
+
+.section__title {
+    font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+    font-size: 7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    text-align: left;
+    line-height: 0.9;
+    color: var(--black-coffee);
+}
+
+.section__body {
+    padding: 4rem 2rem;
+}
+
+
+/*********************************************
+ *                  NAVBAR                   *
+ *********************************************/
+.nav {
+    position: fixed;
+    /* navbar fixa */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    /* garante que a navbar fique sobre outros elementos */
+    transition: background-color 0.5s ease;
+    /* anima a mudança de background em 0,5s */
+}
+
+/* definição de alinhamento, flexibilidade, espaçamento e altura da navbar */
+.nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+/* elimina sublinhado de link e garante posição do logo acima de outros elemntos */
+.nav__logo {
+    text-decoration: none;
+    z-index: 1010;
+}
+
+/* definições tamanho, largura e efeitos para logo */
+.nav__logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    transition: filter 0.5s ease;
+    /* aplicação de filtro à img do logo */
+}
+
+.nav__links {
+    display: flex;
+    list-style: none;
+    /* remoção dos topicos das lista */
+}
+
+.nav__link {
+    display: block;
+    color: var(--white-pearl);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* tudo em maiuscula */
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    /* mudança suave para todas as propriedades */
+}
+
+/* alterações ao passar o mouse */
+.nav__link:hover {
+    background-color: var(--black-coffee);
+    color: var(--white-pearl);
+}
+
+/* alterações com o link ativo */
+.nav__link.active {
+    background-color: var(--white-pearl);
+    color: var(--black-coffee);
+}
+
+
+/* definição de cores que serão alteradas durante o scrolling e apliação do filtro respectivo */
+.nav--theme-dark {
+    background-color: var(--black-coffee);
+}
+
+.nav--theme-dark .nav__logo img {
+    filter: invert(1);
+}
+
+.nav--theme-dark .nav__link {
+    color: var(--white-pearl);
+}
+
+.nav--theme-orange {
+    background-color: var(--orange-real);
+}
+
+.nav--theme-orange .nav__link {
+    color: var(--black-coffee);
+}
+
+.nav--theme-light {
+    background-color: var(--white-pearl);
+}
+
+.nav--theme-light .nav__link {
+    color: var(--black-coffee);
+}
+
+.nav--theme-pink {
+    background-color: var(--pink-light);
+}
+
+.nav--theme-pink .nav__link {
+    color: var(--black-coffee);
+}
+
+.nav--theme-green {
+    background-color: var(--green-neon);
+}
+
+.nav--theme-green .nav__link {
+    color: var(--black-coffee);
+}
+
+.nav--theme-purple {
+    background-color: var(--purple);
+}
+
+.nav--theme-purple .nav__logo img {
+    filter: invert(1);
+}
+
+.nav--theme-purple .nav__link {
+    color: white;
+}
+
+/* identifica as classes que contenham nav--theme e define parametros de cor para hover e active*/
+[class*="nav--theme"] .nav__link:hover,
+[class*="nav--theme"] .nav__link.active {
+    background-color: var(--black-coffee);
+    color: var(--white-pearl);
+}
+
+
+/*********************************************
+ *                  HOME                     *
+ *********************************************/
+/* propriedades para que o conteúdo fique alinhado ao centro */
+.section--home {
+    background-color: var(--orange-real);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* definição de estilo do header da home com propriedades de quebra da palavra caso ultrapasse o tamanho da tela */
+.section__title--home {
+    font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--black-coffee);
+    font-size: 11rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    overflow-wrap: break-word;
+    letter-spacing: 0.12em;
+    text-align: center;
+}
+
+.section__subtitle--home {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white-pearl);
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.75em;
+}
+
+
+/* desabilitar função de quebra definida para mobile */
+.mobile-break {
+    display: none;
+}
+
+/*********************************************
+ *                 SOBRE MIM                  *
+ *********************************************/
+.section--about {
+    background-color: var(--white-pearl);
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    min-height: 100vh;
+}
+
+/* dividir o texto ao meio igualmente */
+.section--about .grid-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+.about__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.about__text .section__title {
+    color: var(--black-coffee);
+    margin-bottom: 2rem;
+}
+
+.about__text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.about__image img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 160px);
+    object-fit: cover;
+}
+
+
+/*********************************************
+ *                 FORMAÇÃO                   *
+ *********************************************/
+.section--education {
+    background-color: var(--green-neon);
+}
+
+.section--education .section__header {
+    padding-bottom: 0;
+}
+
+/* altura da linha e espaçamento entre linhas */
+#education p {
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+/*********************************************
+ *                 PROJETOS                      *
+ *********************************************/
+
+.section--work {
+    background-color: var(--black-coffee);
+}
+
+.section--work .section__header {
+    padding-bottom: 0;
+}
+
+.sectio--work .section__body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* alterar cor do titulo para contrastar fundo escuro */
+.section--work .section__title {
+    color: var(--white-pearl);
+}
+
+/* propriedades grid para resposividade, dividindo o espaço igualmente, com, no mínimo, 250px de larguRa */
+.section--work .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3px;
+}
+
+/* propriedades dos cards, incluindo alteração de cor ao passar o mouse */
+.sectio--work .card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+/* aumentar tamanho dos cards no hover */
+.section--work .card:hover {
+    transform: scale(1.15);
+    z-index: 10;
+}
+
+/* estilos personalizados para os cards da seção work */
+
+.section--work .card:nth-child(1) {
+    background: var(--white-pearl);
+}
+
+/* muda o fundo para green-neon no hover do primeiro card */
+.section--work .card:nth-child(1):hover {
+    background: var(--green-neon);
+}
+
+.section--work .card:nth-child(2) {
+    background: var(--pink-light);
+}
+
+/* muda o fundo para purple no hover do segundo card */
+.section--work .card:nth-child(2):hover {
+    background: var(--purple);
+}
+
+.section--work .card:nth-child(3) {
+    background: var(--orange-real);
+}
+
+/* muda o fundo e o texto para green no hover do terceiro card */
+.section--work .card:nth-child(3):hover {
+    background: var(--green-neon);
+}
+
+/* estilos dos elementos internos dos cards */
+
+.section--work .card__title {
+    font-size: 1.5rem;
+    letter-spacing: 0px;
+    min-height: 50px;
+    text-transform: uppercase;
+    border-bottom: none;
+}
+
+.section--work .card__text {
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* organizer tags de tecnologias utilizadas */
+.section--work .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.section--work .tech-tag {
+    background: var(--black-coffee);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/*********************************************
+ *                 CONTATO                  *
+ *********************************************/
+
+.section--contact {
+    background: var(--pink-light);
+    color: var(--black-coffee);
+}
+
+.section--contact .section__header {
+    padding-bottom: 0;
+}
+
+.section--contact .section__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section--contact .section__title {
+    color: var(--black-coffee);
+}
+
+.contact-form {
+    display: grid;
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.form-group {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--black-coffee);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 2rem;
+    border: 3px solid var(--black-coffee);
+    background: rgb(238, 227, 227);
+    color: var(--black-coffee);
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-radius: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* transição de foco nos campos do formulário */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--orange-real);
+    background: var(--white-pearl);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* botão de envio com transição de cor e movimento */
+.submit-btn {
+    padding: 2rem 3rem;
+    background: var(--orange-real);
+    color: var(--black-coffee);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    justify-self: center;
+    box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* hover do botão com troca de cor e animação */
+.submit-btn:hover {
+    background: var(--green-neon);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px -5px var(--black-coffee);
+}
+
+/* mensagem de confirmação com transição de visibilidade e cor */
+#form-message {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    background-color: var(--green-neon);
+    color: var(--black-coffee);
+    font-weight: 700;
+    display: none;
+    transition: all 0.5s ease;
+}
+
+/*********************************************
+ *                 MODAL                  *
+ *********************************************/
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* cobre toda a tela, evitando scroll lateral */
+    height: 100%;
+    background: var(--black-coffee);
+    /* cor --black-coffee como fundo opaco */
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal {
+    background: var(--white-pearl);
+    padding: 2rem;
+    width: 90%;
+    /* responsivo — não ultrapassa a viewport */
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    /* permite rolagem vertical interna */
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal {
+    transform: scale(1);
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--pink-light);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal__content img {
+    width: 100%;
+    /* imagem não ultrapassa o modal */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.modal__content h3 {
+    font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.modal__content .tech-tags {
+    margin-bottom: 2rem;
+    background-color: var(--green-neon);
+    /* destaque para as tags */
+}
+
+.modal__content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+
+/*********************************************
+ *                 FOOTER                  *
+ *********************************************/
+
+.footer {
+    background-color: var(--black-coffee);
+    color: var(--white-pearl);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer__text {
+    margin-bottom: 1rem;
+}
+
+.footer__social-links a {
+    display: inline-block;
+    color: var(--white-pearl);
+    text-decoration: none;
+    margin: 0 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.footer__social-links a:hover {
+    transform: scale(1.1);
+}
+
+.footer__social-links a:hover svg {
+    fill: var(--orange-real);
+}
+
+/* filtro para destacar os icones */
+.footer img {
+    filter: invert(1); 
+}
+
+/*********************************************
+ *                 MEDIAS                  *
+ *********************************************/
+@media (max-width: 768px) {
+    .nav__container {
+        flex-direction: row;
+        height: 80px;
+        padding: 0 1rem;
+    }
+
+    .nav__links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: calc(100% - 100px);
+        /* espaço reservado para o logo */
+        margin-top: 0;
+    }
+
+    .nav__link {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+        flex-basis: 33%;
+        /* cria 3 colunas horizontais */
+        text-align: center;
+        margin: 1px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section__header,
+    .section__body {
+        padding: 2.5rem 1rem;
+    }
+
+    .section__title {
+        font-size: 3rem;
+        line-height: 1.1;
+    }
+
+    .section__title--home {
+        font-size: 3rem;
+    }
+
+    .section__subtitle--home {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        text-align: left;
+    }
+
+    #subtitle-separator {
+        display: none;
+    }
+
+    .mobile-break {
+        display: block;
+    }
+
+    .section--about .grid-container {
+        grid-template-columns: 1fr;
+        /* empilha os elementos em uma coluna */
+        gap: 2rem;
+    }
+
+    .about__text {
+        padding: 1rem;
+    }
+
+    .about__image img {
+        max-height: 50vh;
+        /* imagem limitada a metade da altura da tela */
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section--work .section__body .container {
+        padding: 0;
+    }
+
+    .section--work .card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* animações */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

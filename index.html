@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Huds</title>
+
+    <!-- download de fontes para estilização-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- link para css -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="nav">
+        <div class="nav__container container">
+            <a href="#home" class="nav__logo">
+                <img src="images/logo_huds.png" alt="Huds">
+            </a>
+            <!-- lista de links para navehação -->
+            <ul class="nav__links" id="nav-links">
+                <!-- data-sections definidos para uso no JS-->
+
+                <li><a href="#home" class="nav__link" data-section="home">HOME</a></li>
+                <li><a href="#about" class="nav__link" data-section="about">SOBRE MIM</a></li>
+                <li><a href="#education" class="nav__link" data-section="education">FORMAÇÃO</a></li>
+                <li><a href="#work" class="nav__link" data-section="work">WORK</a></li>
+                <li><a href="#contact" class="nav__link" data-section="contact">CONTATO</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- conteúdo da página -->
+    <main>
+        <!-- HOME -->
+        <section id="home" class="section section--home">
+            <div class="container">
+                <h1 class="section__title section__title--home"> PORTFÓLIO</h1>
+                <!-- id e classe adicionado para melhor apresentação do subtítulo no mobile -->
+                <h2 class="section__subtitle--home">HUDS BARREIRA <span id="subtitle-separator"> | </span><br
+                        class="mobile-break"> WEB DEVELOPER</h2>
+            </div>
+        </section>
+        <!-- SOBRE MIM -->
+        <section id="about" class="section section--about">
+            <div class="container">
+                <!-- Divisão em 2 colunas: 1 para texto e 1 para foto -->
+                <div class="grid-container">
+                    <div class="about__text fade-in">
+                        <h2 class="section__title">SOBRE MIM</h2>
+                        <P>Desenvolvedora web especializada em front-end e designer gráfica, busco criar soluções
+                            digitais funcionais, elegantes e centradas na experiência do usuário. Migrei da economia
+                            para o código, trazendo na bagagem um olhar analítico, preciso e orientado à produtividade.
+                        </P>
+                        <p>Acredito que estamos em constante formação e que boas práticas de desenvolvimento, aliadas a
+                            um design consistente, são fundamentais. Entrego produtos acessíveis, escaláveis e
+                            impactantes, que unem técnica e criatividade.</p>
+                    </div>
+                    <div class="about__image fade-in">
+                        <img src="images/profile.jpg" alt="Foto de Huds Barreira">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FORMAÇÃO -->
+        <section id="education" class="section section--education">
+            <div class="section__header">
+                <div class="container">
+                    <h2 class="section__title">FORMAÇÃO</h2>
+                </div>
+            </div>
+            <div class="section__body">
+                <div class="container stagger-container">
+                    <!-- Formaçoes dividas em áreas em cards -->
+                    <div class="grid-container">
+                        <div class="card card--education fade-in">
+                            <h3 id="">EDUCAÇÃO</h3>
+                            <p><strong>2011-2015</strong><br>Ciências Econômicas<br><strong>UFMG</strong></p>
+                            <p><strong>2025-2027</strong><br> Análise e Desenvolvimento de Sistemas
+                                <br><strong>Uninter</strong></p>
+                            </p>
+                        </div>
+                        <div class="card fade-in">
+                            <h3>CERTIFICAÇÕES</h3>
+                            <p><strong>IBM:</strong> Data Science</p>
+                            <p><strong>GOOGLE:</strong> Google Cloud Computing Foundations</p>
+                            <p><strong>DOMESTIKA: </strong> Design Gráfico</p>
+                            <p><strong>UDEMY:</strong> Fullstack Web Development Bootcamp</p>
+                        </div>
+
+                        <div class="card fade-in">
+                            <h3>IDIOMAS</h3>
+                            <p><strong>PORTUGUÊS:</Strong> Nativo</p>
+                            <p><strong>INGLÊS:</strong> Fluente (C1)</p>
+                            <p><strong>ESPANHOL:</strong> Básico (A2)</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PROJETOS -->
+        <section id="work" class="section section--work">
+            <div class="section__header">
+                <div class="container">
+                    <h2 class="section__title">PROJETOS</h2>
+                </div>
+            </div>
+            <div class="section__body">
+                <div class="container">
+                    <!-- apresentação dos trabalhos em cards clicáveis que abrem em modais com breves explicações -->
+                    <div class="grid-container stagger-container">
+                        <div class="card fade-in" data-project-id="1">
+                            <h3 class="card__title">e-commerce Shopify</h3>
+                            <p class="card__text">Projeto completo de idealização, planejamento e execução de e-commerce
+                                hospedado no Shopify</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">FIGMA</span><span class="tech-tag">CSS</span><span
+                                    class="tech-tag">HTML</span><span class="tech-tag">JS</span><span
+                                    class="tech-tag">LIQUID</span>
+                            </div>
+                        </div>
+                        <div class="card fade-in" data-project-id="2">
+                            <h3 class="card__title">Consultoria de Transformação Digitais</h3>
+                            <p class="card__text"> Consultoria especializada em Transformação Digital em Lagos,
+                                Portugal.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">BOOTSTRAP</span><span class="tech-tag">WAGTAIL</span><span
+                                    class="tech-tag">SEO</span><span class="tech-tag">SHOPIFY</span>
+                            </div>
+                        </div>
+                        <div class="card fade-in" data-project-id="3">
+                            <h3 class="card__title">Goodreads to Obsidian</h3>
+                            <p class="card__text">Programa em python para organizar todos os livros do Goodreads em
+                                pastas no Obsidian.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PYTHON</span><span class="tech-tag">FIGMA</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CONTATO -->
+        <section id="contact" class="section section--contact">
+            <div class="section__header">
+                <div class="container">
+                    <h1 class="section__title">CONTATO</h1>
+                </div>
+            </div>
+            <div class="section__body">
+                <div class="container">
+                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">ENVIAR</button>
+                    </form>
+                    <div id="form-message"></div>
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <!-- links para as redes de contato -->
+                <p class="footer__text" id="footer-text">&copy; 2025 Huds Barreira. Todos os direitos reservados.</p>
+                <div class="footer__social-links">
+                    <a href="https://www.linkedin.com/in/huds-barreira-2b026352/" target="_blank" aria-label="LinkedIn">
+                        <img src="images/icons8-linkedin.svg" alt="LinkedIn" width="34" height="34">
+                    </a>
+                    <a href="https://github.com/hudsbls" target="_blank" aria-label="GitHub">
+                        <img src="images/icons8-github.svg" alt="GitHub" width="34" height="34">
+                    </a>
+                    <a href="https://www.instagram.com/hudsinha/" target="_blank" aria-label="Instagram">
+                        <img src="images/icons8-instagram.svg" alt="Instagram" width="34" height="34">
+ 
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Estrutura do Modal -->
+    <div id="project-modal-overlay" class="modal-overlay">
+        <div id="project-modal" class="modal">
+            <span id="modal-close-btn" class="modal__close-btn">&times;</span>
+            <div id="modal-content" class="modal__content">
+                <!-- Conteúdo será injetado pelo JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
